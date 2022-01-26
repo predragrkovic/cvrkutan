@@ -1,6 +1,10 @@
-
+// font family
 @font-face {
-    font-family: "San Francisco";
-    src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff");
-  }
-  
+  font-family: 'San Francisco';
+  src: url('https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff');
+}
+
+// font sizes
+$small: 14px;
+$medium: 18px;
+$large: 34px;
