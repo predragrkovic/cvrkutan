@@ -2,12 +2,12 @@ import {createContext, useState} from 'react';
 
 export interface ContextTypes {
   darkTheme: boolean;
-  goDark: (val: boolean) => void;
+  setDarkTheme: (val: boolean) => void;
 }
 
 const contextDefaultValues: ContextTypes = {
   darkTheme: false,
-  goDark: () => undefined,
+  setDarkTheme: () => undefined,
 };
 
 interface Props {}
@@ -17,13 +17,13 @@ export const ThemeContext = createContext<ContextTypes>(contextDefaultValues);
 export const ThemeContextProvider: React.FC<Props> = ({children}) => {
   const [darkTheme, setDarkTheme] = useState<boolean>(false);
 
-  const handleGoDark = (val: boolean) => {
+  const handleSetDarkTheme = (val: boolean) => {
     setDarkTheme(val);
   };
 
   const value = {
     darkTheme: darkTheme,
-    goDark: handleGoDark,
+    setDarkTheme: handleSetDarkTheme,
   };
 
   return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;

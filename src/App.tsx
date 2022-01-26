@@ -1,18 +1,17 @@
-import {ThemeContext} from 'contexts/ThemeContext';
-import {useContext} from 'react';
+import {useDarkTheme} from 'hooks/useDarkTheme';
 import './App.scss';
 
 function App() {
-  const {goDark, darkTheme} = useContext(ThemeContext);
+  const {setDarkTheme, darkTheme} = useDarkTheme();
 
   const handleClick = () => {
-    goDark(true);
+    setDarkTheme(!darkTheme);
   };
 
   return (
     <div className={`app ${darkTheme && 'dark'}`}>
       <p>Hello World!</p>
-      <button onClick={handleClick}>Go Dark</button>
+      <button onClick={handleClick}>{darkTheme ? 'Go Light' : 'Go Dark'}</button>
     </div>
   );
 }
