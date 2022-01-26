@@ -1,0 +1,13 @@
+@import '../../../style/colors.scss';
+
+.header {
+  height: 70px;
+  position: sticky;
+  top: 0;
+  background-color: $primary;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 30px;
+  padding-left: 30px;
+}
