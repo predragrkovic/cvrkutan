@@ -1,0 +1,9 @@
+@import './style/colors';
+
+.app {
+  text-align: center;
+  &.dark {
+    background-color: $background_dark;
+    color: $font_dark;
+  }
+}
