@@ -9,10 +9,19 @@ function App() {
   return (
     <div className={`app ${darkTheme && 'dark'}`}>
       <Header />
-      <Card accentColour="red"> </Card>
-      <Card accentColour="red"> </Card>
-      <Card accentColour="red"> </Card>
-      <Card accentColour="red"> </Card>
+      <div className="screen-container">
+        <div className="left">
+          <div className="posts">
+            <Card accentColour="red"> </Card>
+            <Card accentColour="red"> </Card>
+            <Card accentColour="red"> </Card>
+            <Card accentColour="red"> </Card>
+          </div>
+        </div>
+        <div className={`right ${darkTheme && 'dark'}`}>
+          <Card accentColour="red"></Card>
+        </div>
+      </div>
     </div>
   );
 }

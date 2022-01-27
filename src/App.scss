@@ -2,6 +2,9 @@
 
 .app {
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+
   &.dark {
     background-color: $background_dark;
     color: $font_dark;
@@ -10,4 +13,30 @@
     margin: unset;
     padding: unset;
   }
+}
+
+.screen-container {
+  display: flex;
+  flex: 1;
+}
+.left {
+  flex: 3;
+  position: relative;
+}
+
+.right {
+  border-left: 1px solid;
+  border-left-color: gray;
+
+  flex: 2;
+
+  &.dark {
+    border-left-color: $primary_darker;
+  }
+}
+
+.posts {
+  position: absolute;
+  top: 0px;
+  right: 0px;
 }
