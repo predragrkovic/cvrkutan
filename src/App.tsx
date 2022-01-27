@@ -9,7 +9,10 @@ function App() {
   return (
     <div className={`app ${darkTheme && 'dark'}`}>
       <Header />
-      <Card accentColour="red">Lorem ipsum</Card>
+      <Card accentColour="red"> </Card>
+      <Card accentColour="red"> </Card>
+      <Card accentColour="red"> </Card>
+      <Card accentColour="red"> </Card>
     </div>
   );
 }

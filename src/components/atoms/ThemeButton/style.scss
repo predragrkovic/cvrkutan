@@ -1,4 +1,11 @@
-.image {
+.theme-image {
   width: 35px;
   height: 35px;
+  position: absolute;
+}
+
+.theme-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
