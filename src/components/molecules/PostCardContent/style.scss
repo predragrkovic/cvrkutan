@@ -1,0 +1,41 @@
+@import '../../../style/fonts.scss';
+
+.post-card-content-container {
+  padding: 30px;
+  display: flex;
+  flex-direction: row;
+
+  .post-card-content-left {
+    padding-top: 15px;
+    padding-bottom: 15px;
+
+    flex: 1;
+    align-self: center;
+    .profile-picture {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      border: 2px solid;
+      padding: 2px;
+    }
+  }
+  .post-card-content-right {
+    flex: 4;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    .title {
+      font-size: $large;
+    }
+
+    .post-card-content-text {
+      margin-top: 15px;
+    }
+
+    .text {
+      font-size: $medium;
+    }
+  }
+}

@@ -1,3 +1,5 @@
+@import './../../../style/fonts.scss';
+
 .theme-image {
   width: 35px;
   height: 35px;
@@ -8,4 +10,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.logo {
+  font-size: $large;
 }

@@ -1,11 +1,11 @@
 @import '../../../style/colors';
 
 .card {
-  margin: 24px;
-  padding: 24px;
+  margin-top: 24px;
+  margin-bottom: 36px;
 
   background-color: $surface;
-  width: 400px;
+  width: 560px;
   box-shadow: 0px 0px 20px $primary;
   transition: 0.3s;
   border-radius: 30px;
