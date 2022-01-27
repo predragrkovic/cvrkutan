@@ -1,9 +1,13 @@
 @import './style/colors';
 
 .app {
-  text-align: center;
+  height: 100vh;
   &.dark {
     background-color: $background_dark;
     color: $font_dark;
+  }
+  p {
+    margin: unset;
+    padding: unset;
   }
 }
