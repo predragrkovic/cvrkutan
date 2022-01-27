@@ -16,27 +16,32 @@
 }
 
 .screen-container {
+  margin-right: 20%;
+  margin-left: 20%;
+
   display: flex;
   flex: 1;
-}
-.left {
-  flex: 3;
-  position: relative;
-}
+  flex-direction: row;
 
-.right {
   border-left: 1px solid;
-  border-left-color: gray;
-
-  flex: 2;
-
-  &.dark {
-    border-left-color: $primary_darker;
-  }
+  border-left-color: $primary_darker;
+  border-right: 1px solid;
+  border-right-color: $primary_darker;
 }
 
-.posts {
-  position: absolute;
-  top: 0px;
-  right: 0px;
+.posts-container {
+  display: flex;
+  flex: 4;
+  flex-direction: column;
+  align-items: center;
+
+  border-right: 1px solid;
+  border-right-color: $primary_darker;
+}
+
+.chat-container {
+  display: flex;
+  flex: 3;
+  flex-direction: column;
+  align-items: center;
 }
