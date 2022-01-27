@@ -13,9 +13,6 @@ function App() {
         <div className="left">
           <div className="posts">
             <Card accentColour="red"> </Card>
-            <Card accentColour="red"> </Card>
-            <Card accentColour="red"> </Card>
-            <Card accentColour="red"> </Card>
           </div>
         </div>
         <div className={`right ${darkTheme && 'dark'}`}>
