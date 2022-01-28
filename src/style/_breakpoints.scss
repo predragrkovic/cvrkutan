@@ -1,0 +1,14 @@
+//screen sizes
+$first-fold: 1180px;
+
+
+
+
+
+
+//mixins
+@mixin fold {
+    @media (max-width: #{$first-fold}) {
+        @content;
+    }
+  }
