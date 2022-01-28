@@ -1,4 +1,5 @@
 // import PostCardContent from 'components/molecules/PostCardContent';
+import Chat from 'components/organisms/Chat';
 import Header from 'components/organisms/Header';
 import Posts from 'components/organisms/Posts';
 import {useDarkTheme} from 'hooks/useDarkTheme';
@@ -13,7 +14,7 @@ function App() {
       <div className={`screen-container`}>
         <div className="padding-div"></div>
         <Posts />
-        <div className="chat-container"></div>
+        <Chat />
         <div className="padding-div"></div>
       </div>
     </div>

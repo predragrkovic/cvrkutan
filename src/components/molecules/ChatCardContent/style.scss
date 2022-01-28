@@ -1,0 +1,34 @@
+@import '../../../style/colors';
+@import 'src/style/breakpoints';
+
+.chat-card-container { 
+    height: 95vh;
+    display: flex;
+    flex-direction: column;
+
+    .scroll-div { 
+        flex:1;  
+        background-color: $surface;     
+        &.dark { 
+            background-color: $surface_dark;
+        }
+    }
+
+    .input-message { 
+        padding: 30px;
+        min-height: 100px;
+        height: fit-content;
+        border: none;
+        overflow: auto;
+        outline: none;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+        resize: none; 
+        background-color: $input;
+        &.dark { 
+            background-color: $input_dark;
+            color: $font_dark;
+        }
+    }
+}
