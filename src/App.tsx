@@ -1,4 +1,6 @@
 // import PostCardContent from 'components/molecules/PostCardContent';
+import ProfilePicture from 'components/atoms/ProfilePicture';
+import NewPostCardContent from 'components/molecules/NewPostCardContent';
 import PostCardContent from 'components/molecules/PostCardContent';
 import Header from 'components/organisms/Header';
 import {Card} from 'components/other/Card/Card';
@@ -15,6 +17,15 @@ function App() {
       <Header />
       <div className={`screen-container`}>
         <div className="posts-container">
+          <div className="new-post-container">
+            <div className="profile-picture-container">
+              <ProfilePicture source="https://avatarfiles.alphacoders.com/217/217489.jpg" />
+            </div>
+            <Card>
+              <NewPostCardContent />
+            </Card>
+          </div>
+
           {POSTS.map((post: Post) => {
             console.log(post);
             return (
