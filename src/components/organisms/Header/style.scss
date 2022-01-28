@@ -1,7 +1,10 @@
 @import '../../../style/colors.scss';
+@import './../../../style/fonts.scss';
+@import 'src/style/breakpoints.scss';
 
 .header {
   height: 70px;
+  min-width: 1080px;
   position: sticky;
   top: 0;
   background-color: $primary;
@@ -10,4 +13,13 @@
   align-items: center;
   padding-right: 30px;
   padding-left: 30px;
+
+  .logo {
+    font-size: $large;
+  }
+
+  @include fold { 
+    min-width: unset;
+    width: 100vw;
+  }
 }
