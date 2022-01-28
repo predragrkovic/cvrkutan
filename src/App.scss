@@ -16,17 +16,12 @@
 }
 
 .screen-container {
-  margin-right: 20%;
-  margin-left: 20%;
+  padding-right: 20%;
+  padding-left: 20%;
 
   display: flex;
   flex: 1;
   flex-direction: row;
-
-  border-left: 1px solid;
-  border-left-color: $primary_darker;
-  border-right: 1px solid;
-  border-right-color: $primary_darker;
 }
 
 .posts-container {
@@ -37,6 +32,10 @@
 
   border-right: 1px solid;
   border-right-color: $primary_darker;
+  border-left: 1px solid;
+  border-left-color: $primary_darker;
+
+  min-width: 640px;
 }
 
 .chat-container {
@@ -44,4 +43,7 @@
   flex: 3;
   flex-direction: column;
   align-items: center;
+  min-width: 440px;
+  border-right: 1px solid;
+  border-right-color: $primary_darker;
 }
