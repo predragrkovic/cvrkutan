@@ -7,9 +7,13 @@ import Post from 'models/Post';
 import './style.scss';
 import NewPost from '../NewPost';
 
-export const PostsContainer: FC = () => {
+interface PostsProps {
+  isRendered: boolean;
+}
+
+export const PostsContainer: FC<PostsProps> = ({isRendered}) => {
   return (
-    <div className="posts-container">
+    <div className={`posts-container ${!isRendered && 'hide'}`}>
       <NewPost />
       {POSTS.map((post: Post) => {
         console.log(post);

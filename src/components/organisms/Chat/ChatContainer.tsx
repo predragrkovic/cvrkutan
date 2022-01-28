@@ -4,9 +4,13 @@ import {FC} from 'react';
 
 import './style.scss';
 
-export const ChatContainer: FC = () => {
+interface ChatProps {
+  isRendered: boolean;
+}
+
+export const ChatContainer: FC<ChatProps> = ({isRendered}) => {
   return (
-    <div className="chat-container">
+    <div className={`chat-container ${!isRendered && 'hide'}`}>
       <Card>
         <ChatCardContent />
       </Card>
