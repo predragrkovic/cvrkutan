@@ -22,11 +22,11 @@
   flex-direction: row;
 }
 
-.padding-div { 
+.padding-div {
   width: 20vw;
   min-width: 50px;
-  @include fold { 
-    display:none;
+  @include fold {
+    display: none;
   }
 }
 
@@ -42,9 +42,23 @@
   border-left-color: $primary_darker;
 
   width: 100%;
-
   padding-left: 50px;
   padding-right: 50px;
+
+  .new-post-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+
+    margin-top: 40px;
+    margin-bottom: 20px;
+
+    .profile-picture-container {
+      margin-right: 30px;
+    }
+  }
 }
 
 .chat-container {
@@ -55,7 +69,7 @@
   min-width: 440px;
   border-right: 1px solid;
   border-right-color: $primary_darker;
-  @include fold { 
-    display:none;
+  @include fold {
+    display: none;
   }
 }

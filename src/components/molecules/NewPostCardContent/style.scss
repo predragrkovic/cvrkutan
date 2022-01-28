@@ -1,0 +1,43 @@
+@import '../../../style/colors.scss';
+@import '../../../style/fonts';
+
+.new-post-card-container {
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  .new-post-text {
+    border: none;
+    overflow: auto;
+    outline: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    resize: none; /*remove the resize handle on the bottom right*/
+
+    flex: 1;
+    padding-right: 30px;
+    padding-left: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: $input;
+    color: black;
+    font-size: $small;
+
+    &.dark {
+      background-color: $input_dark;
+      color: ghostwhite;
+    }
+  }
+
+  .button {
+    min-height: 50px;
+    background-color: $primary;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
