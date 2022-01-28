@@ -14,6 +14,7 @@ function App() {
     <div className={`app ${darkTheme && 'dark'}`}>
       <Header />
       <div className={`screen-container`}>
+        <div className="padding-div"></div>
         <div className="posts-container">
           {POSTS.map((post: Post) => {
             console.log(post);
@@ -25,6 +26,7 @@ function App() {
           })}
         </div>
         <div className="chat-container"></div>
+        <div className="padding-div"></div>
       </div>
     </div>
   );
