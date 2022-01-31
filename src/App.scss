@@ -45,6 +45,7 @@
 }
 
 .screen-container {
+  overflow-y: hidden;
   display: flex;
   flex: 1;
   flex-direction: row;
@@ -58,15 +59,9 @@
   }
 }
 
-.chat-container {
-  display: flex;
-  flex: 3;
-  flex-direction: column;
-  align-items: center;
-  min-width: 440px;
-  border-right: 1px solid;
-  border-right-color: $primary_darker;
-  @include fold {
-    display: none;
+.choice-button {
+  display: none;
+  @include fold { 
+    display: block;
   }
 }

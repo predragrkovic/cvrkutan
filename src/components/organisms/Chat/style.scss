@@ -1,0 +1,24 @@
+@import '../../../style/colors.scss';
+@import './../../../style/fonts.scss';
+@import 'src/style/breakpoints.scss';
+
+
+.chat-container {
+    padding-top: 40px;
+    padding-left: 50px;
+    padding-right: 50px;
+    display: flex;
+    flex: 3;
+    flex-direction: column;
+    align-items: center;
+    min-width: 440px;
+    border-right: 1px solid;
+    border-right-color: $primary_darker;
+
+  @include fold { 
+    &.hide { 
+      display: none;
+    }
+  }
+
+}
