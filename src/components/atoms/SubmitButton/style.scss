@@ -1,0 +1,14 @@
+@import '../../../style/colors.scss';
+@import '../../../style/fonts';
+
+.button {
+    min-height: 50px;
+    background-color: $primary;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    &:hover {
+      cursor: pointer;
+    }
+  }

@@ -7,10 +7,10 @@ export const USERS: User[] = [
 ];
 
 export const POSTS: Post[] = [
-  new Post(USERS[0], 'Hello :)', 'my first post'),
+  new Post(USERS[0], 'Здраво Свима', 'На овај сајт, дођох'),
   new Post(
     USERS[1],
-    'Welcome :)',
-    'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.',
+    'Добродошао Бебо Јода',
+    'Лорем ипсум долор сит амет, цонсецтетуер адиписцинг елит. Аенеан цоммодо лигула егет долор. Енејска маса. Цум социос натокуе пенатибус ет магнис дис партуриент монтес, насцетур ридицулус мус. Донец куам фелис, ултрициес нец, пеллентескуе еу, претиум куис, сем. Нулла цонсекуат масса куис еним.',
   ),
 ];

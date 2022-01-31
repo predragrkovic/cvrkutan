@@ -1,5 +1,6 @@
 @import './style/colors';
 @import './style/breakpoints';
+@import './style/fonts';
 
 .app {
   height: 100vh;
@@ -17,9 +18,12 @@
 }
 
 .screen-container {
+  overflow-y: hidden;
+  overflow-x: hidden;
   display: flex;
   flex: 1;
   flex-direction: row;
+  justify-content: center;
 }
 
 .padding-div {
@@ -30,15 +34,9 @@
   }
 }
 
-.chat-container {
-  display: flex;
-  flex: 3;
-  flex-direction: column;
-  align-items: center;
-  min-width: 440px;
-  border-right: 1px solid;
-  border-right-color: $primary_darker;
+.choice-button {
+  display: none;
   @include fold {
-    display: none;
+    display: block;
   }
 }

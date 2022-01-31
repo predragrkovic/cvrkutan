@@ -9,8 +9,8 @@ interface ThemeButtonProps {}
 
 export const ThemeButton: FC<ThemeButtonProps> = () => {
   const {setDarkTheme} = useDarkTheme();
-  const [sunPosition, setSunPosition] = useState(-100);
-  const [moonPosition, setMoonPosition] = useState(0);
+  const [sunPosition, setSunPosition] = useState(0);
+  const [moonPosition, setMoonPosition] = useState(-100);
 
   const setDarkThemeHandler = () => {
     setDarkTheme(true);
