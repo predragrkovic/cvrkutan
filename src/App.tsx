@@ -3,6 +3,7 @@ import Header from 'components/organisms/Header';
 import Posts from 'components/organisms/Posts';
 import {useDarkTheme} from 'hooks/useDarkTheme';
 import './App.scss';
+import {FaComment, FaReddit} from 'react-icons/fa';
 
 function App() {
   const {darkTheme} = useDarkTheme();
@@ -15,6 +16,14 @@ function App() {
         <Posts />
         <div className="chat-container"></div>
         <div className="padding-div"></div>
+      </div>
+      <div className={`buttons-container ${darkTheme && 'dark'}`}>
+        <div className="button">
+          <FaReddit size={40} />
+        </div>
+        <div className="button">
+          <FaComment size={20} />
+        </div>
       </div>
     </div>
   );

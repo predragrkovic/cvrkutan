@@ -1,5 +1,6 @@
 @import './style/colors';
 @import './style/breakpoints';
+@import './style/fonts';
 
 .app {
   height: 100vh;
@@ -13,6 +14,33 @@
   p {
     margin: unset;
     padding: unset;
+  }
+  .buttons-container {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    text-align: center;
+    height: 8vh;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    background-color: $surface;
+
+    border-top: 1px solid;
+    border-top-color: $primary_darker;
+
+    &.dark {
+      background-color: $surface_dark;
+    }
+
+    .button {
+      width: 100%;
+      padding-top: 20px;
+    }
   }
 }
 
