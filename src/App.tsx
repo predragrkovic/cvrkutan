@@ -29,11 +29,15 @@ function App() {
         <div className="padding-div"></div>
       </div>
       <div className={`buttons-container ${darkTheme && 'dark'}`}>
-        <div className="button">
-          <FaReddit onClick={handlePostsClick} size={40} />
+        <div
+          onClick={handlePostsClick}
+          className={`button ${renderChoice === 'posts' && 'selected'}`}>
+          <FaReddit size={renderChoice === 'posts' ? 40 : 20} />
         </div>
-        <div className="button">
-          <FaComment onClick={handleChatClick} size={20} />
+        <div
+          onClick={handleChatClick}
+          className={`button ${renderChoice === 'chat' && 'selected'}`}>
+          <FaComment size={renderChoice === 'chat' ? 40 : 20} />
         </div>
       </div>
     </div>

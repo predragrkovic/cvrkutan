@@ -16,6 +16,7 @@
     padding: unset;
   }
   .buttons-container {
+    z-index: 999;
     position: fixed;
     left: 0;
     bottom: 0;
@@ -39,16 +40,22 @@
 
     .button {
       width: 100%;
-      padding-top: 20px;
+      background-color: unset;
+
+      &.selected {
+        color: $primary;
+      }
     }
   }
 }
 
 .screen-container {
   overflow-y: hidden;
+  overflow-x: hidden;
   display: flex;
   flex: 1;
   flex-direction: row;
+  justify-content: center;
 }
 
 .padding-div {
@@ -61,7 +68,7 @@
 
 .choice-button {
   display: none;
-  @include fold { 
+  @include fold {
     display: block;
   }
 }
