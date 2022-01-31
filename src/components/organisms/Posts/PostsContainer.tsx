@@ -15,14 +15,16 @@ export const PostsContainer: FC<PostsProps> = ({isRendered}) => {
   return (
     <div className={`posts-container ${!isRendered && 'hide'}`}>
       <NewPost />
-      {POSTS.map((post: Post) => {
-        console.log(post);
-        return (
-          <Card key={post.user.username} color="secondary">
-            <PostCardContent post={post} />
-          </Card>
-        );
-      })}
+      <div className="scroll-div">
+        {POSTS.map((post: Post) => {
+          console.log(post);
+          return (
+            <Card key={post.user.username} color="secondary">
+              <PostCardContent post={post} />
+            </Card>
+          );
+        })}
+      </div>
     </div>
   );
 };

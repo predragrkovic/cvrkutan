@@ -2,7 +2,7 @@
 @import 'src/style/breakpoints';
 
 .chat-card-container { 
-    height: 95vh;
+    height: 85vh;
     display: flex;
     flex-direction: column;
 
@@ -12,6 +12,8 @@
         &.dark { 
             background-color: $surface_dark;
         }
+        border-top-right-radius: 30px;
+        border-top-left-radius: 30px;
     }
 
     .input-message { 
@@ -30,5 +32,10 @@
             background-color: $input_dark;
             color: $font_dark;
         }
+    }
+
+    .button { 
+        border-bottom-left-radius: 30px;
+        border-bottom-right-radius: 30px;
     }
 }
