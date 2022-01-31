@@ -22,7 +22,7 @@
 
   @include fold {
     min-width: unset;
-    height: calc(100vh - 150px);
+    padding-bottom: 120px;
     &.hide {
       display: none;
     }
