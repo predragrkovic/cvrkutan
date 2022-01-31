@@ -17,7 +17,6 @@ export const PostsContainer: FC<PostsProps> = ({isRendered}) => {
       <NewPost />
       <div className="scroll-div">
         {POSTS.map((post: Post) => {
-          console.log(post);
           return (
             <Card key={post.user.username} color="secondary">
               <PostCardContent post={post} />

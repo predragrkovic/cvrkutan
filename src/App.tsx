@@ -3,6 +3,7 @@ import BottomTabNavigator from 'components/molecules/BottomTabNavigator';
 import Chat from 'components/organisms/Chat';
 import Header from 'components/organisms/Header';
 import Posts from 'components/organisms/Posts';
+import UserIdentificationModal from 'components/organisms/UserIdentification';
 import {useDarkTheme} from 'hooks/useDarkTheme';
 import {useState} from 'react';
 import './App.scss';
@@ -33,6 +34,7 @@ function App() {
         handleChatClick={handleChatClick}
         handlePostsClick={handlePostsClick}
       />
+      <UserIdentificationModal />
     </div>
   );
 }
