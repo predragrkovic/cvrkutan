@@ -2,6 +2,14 @@ import {FC} from 'react';
 
 import './style.scss';
 
-export const SubmitButton: FC = () => {
-  return <div className="button">Share</div>;
+interface ButtonProps {
+  onSubmitClick?: () => void;
+}
+
+export const SubmitButton: FC<ButtonProps> = ({onSubmitClick}) => {
+  return (
+    <div className="button" onClick={onSubmitClick}>
+      Share
+    </div>
+  );
 };
