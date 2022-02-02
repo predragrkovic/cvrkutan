@@ -14,14 +14,13 @@ export const ChatCardContent: FC = () => {
   const [message, setMessage] = useState<string>();
 
   useEffect(() => {
-    Pusher.logToConsole = true;
-
     const pusher = new Pusher('d6bf8ef287243e8f9e13', {
       cluster: 'eu',
     });
 
     const channel = pusher.subscribe('chat');
     channel.bind('message', function (data: Message) {
+      console.log(data);
       setMessages((messages) => [...messages, data]);
     });
   }, []);
