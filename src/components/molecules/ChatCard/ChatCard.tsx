@@ -49,6 +49,10 @@ export const ChatCard: FC = () => {
     setMessage('');
   };
 
+  const handleKeyPressOnInput = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === 'Enter' && !e.shiftKey) handleSubmit();
+  };
+
   return (
     <div className={`chat-card-container ${darkTheme && 'dark'}`}>
       <div className={`scroll-div ${darkTheme && 'dark'}`}>
@@ -57,11 +61,12 @@ export const ChatCard: FC = () => {
         })}
       </div>
       <textarea
+        onKeyPress={(e) => handleKeyPressOnInput(e)}
         className={`input-message ${darkTheme && 'dark'}`}
-        placeholder="Type your message..."
+        placeholder="Упиши своју поруку..."
         value={message}
         onChange={handleInputChange}></textarea>
-      <SubmitButton onSubmitClick={handleSubmit}>Send</SubmitButton>
+      <SubmitButton onSubmitClick={handleSubmit}>Пошаљи</SubmitButton>
     </div>
   );
 };
