@@ -3,8 +3,17 @@
 
 .new-post-card-container {
   height: 150px;
+  width: 100%;
+  margin-bottom: 20px;
   display: flex;
   flex-direction: column;
+  border-radius: 30px;
+  overflow: hidden;
+
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  &.dark {
+    box-shadow: unset;
+  }
   .new-post-text {
     border: none;
     overflow: auto;
@@ -20,17 +29,11 @@
     background-color: $input;
     color: black;
     font-size: $small;
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
 
     &.dark {
       background-color: $input_dark;
       color: ghostwhite;
+      box-shadow: unset;
     }
-  }
-
-  .button { 
-    border-bottom-right-radius: 30px;
-    border-bottom-left-radius: 30px;
   }
 }

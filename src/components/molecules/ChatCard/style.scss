@@ -5,9 +5,18 @@
   height: 85vh;
   display: flex;
   flex-direction: column;
+  width: 100%;
+  border-radius: 30px;
+  overflow: hidden;
+
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 
   @include fold {
     height: 76vh;
+  }
+
+  &.dark {
+    box-shadow: unset;
   }
 
   .scroll-div {
@@ -16,8 +25,6 @@
     &.dark {
       background-color: $surface_dark;
     }
-    border-top-right-radius: 30px;
-    border-top-left-radius: 30px;
   }
 
   .input-message {
@@ -36,10 +43,5 @@
       background-color: $input_dark;
       color: $font_dark;
     }
-  }
-
-  .button {
-    border-bottom-left-radius: 30px;
-    border-bottom-right-radius: 30px;
   }
 }

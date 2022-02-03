@@ -7,7 +7,7 @@ import Pusher from 'pusher-js';
 
 import './style.scss';
 
-export const ChatCardContent: FC = () => {
+export const ChatCard: FC = () => {
   const {darkTheme} = useDarkTheme();
   const username = localStorage.getItem('username');
   const [messages, setMessages] = useState<Message[]>([]);
@@ -47,7 +47,7 @@ export const ChatCardContent: FC = () => {
   };
 
   return (
-    <div className="chat-card-container">
+    <div className={`chat-card-container ${darkTheme && 'dark'}`}>
       <div className={`scroll-div ${darkTheme && 'dark'}`}>
         {messages.map((message: Message, index: number) => {
           return <MessageBox username={message.username} text={message.message} key={index} />;
@@ -58,7 +58,7 @@ export const ChatCardContent: FC = () => {
         placeholder="Type your message..."
         value={message}
         onChange={handleInputChange}></textarea>
-      <SubmitButton onSubmitClick={handleSubmit} />
+      <SubmitButton onSubmitClick={handleSubmit}>Send</SubmitButton>
     </div>
   );
 };

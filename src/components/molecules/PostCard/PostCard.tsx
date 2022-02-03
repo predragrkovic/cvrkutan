@@ -1,15 +1,18 @@
 import ProfilePicture from 'components/atoms/ProfilePicture';
+import {useDarkTheme} from 'hooks/useDarkTheme';
 import Post from 'models/Post';
 import {FC} from 'react';
 import './style.scss';
 
-interface PostCardContentProps {
+interface PostCardProps {
   post: Post;
 }
 
-export const PostCardContent: FC<PostCardContentProps> = ({post}) => {
+export const PostCard: FC<PostCardProps> = ({post}) => {
+  const {darkTheme} = useDarkTheme();
+
   return (
-    <div className="post-card-content-container">
+    <div className={`post-card-container ${darkTheme && 'dark'}`}>
       <div className="post-card-content-left">
         <ProfilePicture source={post.user.picture} />
       </div>

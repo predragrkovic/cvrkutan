@@ -1,6 +1,5 @@
 import ProfilePicture from 'components/atoms/ProfilePicture';
-import NewPostCardContent from 'components/molecules/NewPostCardContent';
-import {Card} from 'components/other/Card/Card';
+import NewPostCard from 'components/molecules/NewPostCard';
 import {ChangeEventHandler, FC} from 'react';
 
 import './style.scss';
@@ -21,13 +20,12 @@ export const NewPostContainer: FC<NewPostCardProps> = ({
       <div className="profile-picture-container">
         <ProfilePicture source="https://avatarfiles.alphacoders.com/217/217489.jpg" />
       </div>
-      <Card>
-        <NewPostCardContent
-          onButtonClick={onButtonClick}
-          inputPost={inputPost}
-          handleInputPost={handleInputPost}
-        />
-      </Card>
+
+      <NewPostCard
+        onButtonClick={onButtonClick}
+        inputPost={inputPost}
+        handleInputPost={handleInputPost}
+      />
     </div>
   );
 };

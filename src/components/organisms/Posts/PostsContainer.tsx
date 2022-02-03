@@ -1,12 +1,12 @@
-import {Card} from 'components/other/Card/Card';
 import {FC, useEffect, useState} from 'react';
-import PostCardContent from 'components/molecules/PostCardContent';
+import PostCard from 'components/molecules/PostCard';
 import Post from 'models/Post';
 
 import './style.scss';
 import NewPost from '../NewPost';
 import Pusher from 'pusher-js';
 import User from 'models/User';
+import {POSTS} from 'mock/dummy-data';
 
 interface PostsProps {
   isRendered: boolean;
@@ -63,12 +63,8 @@ export const PostsContainer: FC<PostsProps> = ({isRendered}) => {
         handleInputPost={handleInputPost}
       />
       <div className="scroll-div">
-        {posts.map((post: Post) => {
-          return (
-            <Card key={post.user.username} color="secondary">
-              <PostCardContent post={post} />
-            </Card>
-          );
+        {POSTS.map((post: Post) => {
+          return <PostCard key={post.user.username} post={post} />;
         })}
       </div>
     </div>
