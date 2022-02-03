@@ -4,6 +4,7 @@ import {useDarkTheme} from 'hooks/useDarkTheme';
 import Message from 'models/Message';
 import {FC, useEffect, useState} from 'react';
 import Pusher from 'pusher-js';
+import config from 'config.json';
 
 import './style.scss';
 
@@ -34,7 +35,7 @@ export const ChatCard: FC = () => {
   const handleSubmit = async () => {
     if (!message) return;
 
-    await fetch('http://192.168.10.225:8000/api/messages', {
+    await fetch(`http://${config.api_address}:8000/api/messages`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
