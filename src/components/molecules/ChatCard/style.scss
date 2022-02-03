@@ -5,6 +5,7 @@
   height: 85vh;
   display: flex;
   flex-direction: column;
+
   width: 100%;
   border-radius: 30px;
   overflow: hidden;
@@ -20,6 +21,13 @@
   }
 
   .scroll-div {
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    overflow: scroll;
+
     flex: 1;
     background-color: $surface;
     &.dark {
