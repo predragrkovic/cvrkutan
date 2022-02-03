@@ -34,9 +34,11 @@ export const ChatCard: FC = () => {
   const handleSubmit = async () => {
     if (!message) return;
 
-    await fetch('http://localhost:8000/api/messages', {
+    await fetch('http://192.168.10.225:8000/api/messages', {
       method: 'POST',
-      headers: {'Content-Type': 'application/json'},
+      headers: {
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({
         username,
         message,
