@@ -5,8 +5,7 @@ import Post from 'models/Post';
 import './style.scss';
 import NewPost from '../NewPost';
 import Pusher from 'pusher-js';
-import User from 'models/User';
-import {POSTS} from 'mock/dummy-data';
+import config from 'config.json';
 
 interface PostsProps {
   isRendered: boolean;
@@ -15,6 +14,7 @@ interface PostsProps {
 export const PostsContainer: FC<PostsProps> = ({isRendered}) => {
   const [posts, setPosts] = useState<Post[]>([]);
   const [newPost, setNewPost] = useState<string>('');
+  const [newTitle, setNewTitle] = useState<string>('');
   const username = localStorage.getItem('username');
   const profileImage = localStorage.getItem('imageUrl');
 
@@ -26,7 +26,7 @@ export const PostsContainer: FC<PostsProps> = ({isRendered}) => {
     const channel = pusher.subscribe('board');
     channel.bind('post', function (data: Post) {
       console.log(data);
-      setPosts((post) => [...posts, data]);
+      setPosts((posts) => [...posts, data]);
     });
   }, []);
 
@@ -34,21 +34,23 @@ export const PostsContainer: FC<PostsProps> = ({isRendered}) => {
     setNewPost(e.target.value);
   };
 
+  const handleInputTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNewTitle(e.target.value);
+  };
+
   const handleNewPostClick = async () => {
     if (!newPost) return;
     if (!username) return;
     if (!profileImage) return;
 
-    const user = new User(profileImage, username);
-    const postToSend = new Post(user, 'Hello!', newPost);
-
-    console.log(JSON.stringify(postToSend));
-
-    await fetch('http://localhost:8000/api/posts', {
+    await fetch(`http://${config.api_address}:8000/api/posts`, {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
-        postToSend,
+        username: username,
+        picture: profileImage,
+        title: newTitle,
+        content: newPost,
       }),
     });
 
@@ -60,11 +62,13 @@ export const PostsContainer: FC<PostsProps> = ({isRendered}) => {
       <NewPost
         onButtonClick={handleNewPostClick}
         inputPost={newPost}
+        inputTitle={newTitle}
         handleInputPost={handleInputPost}
+        handleInputTitle={handleInputTitle}
       />
       <div className="scroll-div">
-        {POSTS.map((post: Post) => {
-          return <PostCard key={post.user.username} post={post} />;
+        {posts.map((post: Post) => {
+          return <PostCard key={post.username} post={post} />;
         })}
       </div>
     </div>

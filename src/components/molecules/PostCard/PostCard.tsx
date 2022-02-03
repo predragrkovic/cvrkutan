@@ -14,7 +14,7 @@ export const PostCard: FC<PostCardProps> = ({post}) => {
   return (
     <div className={`post-card-container ${darkTheme && 'dark'}`}>
       <div className="post-card-content-left">
-        <ProfilePicture source={post.user.picture} />
+        <ProfilePicture source={post.picture} />
       </div>
       <div className="post-card-content-right">
         <p className="title">{post.title}</p>
