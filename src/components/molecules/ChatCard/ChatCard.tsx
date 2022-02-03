@@ -58,6 +58,7 @@ export const ChatCard: FC = () => {
         })}
       </div>
       <textarea
+        disabled={isSending}
         onKeyPress={(e) => handleKeyPressOnInput(e)}
         className={`input-message ${darkTheme && 'dark'}`}
         placeholder="Упиши своју поруку..."
