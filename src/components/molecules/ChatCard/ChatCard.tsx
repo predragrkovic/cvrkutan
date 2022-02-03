@@ -13,6 +13,7 @@ export const ChatCard: FC = () => {
   const username = localStorage.getItem('username');
   const [messages, setMessages] = useState<Message[]>([]);
   const [message, setMessage] = useState<string>();
+  const [isSending, setIsSending] = useState(false);
 
   useEffect(() => {
     const pusher = new Pusher('d6bf8ef287243e8f9e13', {
@@ -35,18 +36,25 @@ export const ChatCard: FC = () => {
   const handleSubmit = async () => {
     if (!message) return;
 
-    await fetch(`http://${config.api_address}:8000/api/messages`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        username,
-        message,
-      }),
-    });
+    try {
+      setIsSending(true);
+      await fetch(`http://${config.api_address}:8000/api/messages`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username,
+          message,
+        }),
+      });
 
-    setMessage('');
+      setMessage('');
+    } catch (error: any) {
+      console.log('Sending message failed. Error:', error);
+    } finally {
+      setIsSending(false);
+    }
   };
 
   return (
@@ -61,7 +69,9 @@ export const ChatCard: FC = () => {
         placeholder="Type your message..."
         value={message}
         onChange={handleInputChange}></textarea>
-      <SubmitButton onSubmitClick={handleSubmit}>Send</SubmitButton>
+      <SubmitButton disabled={isSending} onSubmitClick={handleSubmit}>
+        Send
+      </SubmitButton>
     </div>
   );
 };
