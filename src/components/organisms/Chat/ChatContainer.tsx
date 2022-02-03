@@ -1,5 +1,4 @@
-import ChatCardContent from 'components/molecules/ChatCardContent';
-import {Card} from 'components/other/Card/Card';
+import ChatCard from 'components/molecules/ChatCard';
 import {FC} from 'react';
 
 import './style.scss';
@@ -11,9 +10,7 @@ interface ChatProps {
 export const ChatContainer: FC<ChatProps> = ({isRendered}) => {
   return (
     <div className={`chat-container ${!isRendered && 'hide'}`}>
-      <Card>
-        <ChatCardContent />
-      </Card>
+      <ChatCard />
     </div>
   );
 };

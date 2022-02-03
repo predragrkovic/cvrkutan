@@ -1,9 +1,22 @@
 @import '../../../style/fonts.scss';
+@import '../../../style/colors.scss';
+@import '../../../style/breakpoints.scss';
 
-.post-card-content-container {
+.post-card-container {
   padding: 30px;
+  margin-bottom: 20px;
+
   display: flex;
   flex-direction: row;
+
+  border-radius: 30px;
+  background-color: $surface;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+
+  &.dark {
+    background-color: $surface_dark;
+    box-shadow: unset;
+  }
 
   .post-card-content-left {
     padding-top: 15px;
@@ -21,6 +34,11 @@
 
     .title {
       font-size: $large;
+      font-weight: bold;
+
+      @include fold {
+        font-size: $large-fold;
+      }
     }
 
     .post-card-content-text {
@@ -29,6 +47,10 @@
 
     .text {
       font-size: $medium;
+
+      @include fold {
+        font-size: $medium-fold;
+      }
     }
   }
 }

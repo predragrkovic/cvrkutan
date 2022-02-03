@@ -6,10 +6,10 @@ interface ButtonProps {
   onSubmitClick?: () => void;
 }
 
-export const SubmitButton: FC<ButtonProps> = ({onSubmitClick}) => {
+export const SubmitButton: FC<ButtonProps> = ({onSubmitClick, children}) => {
   return (
     <div className="button" onClick={onSubmitClick}>
-      Share
+      {children}
     </div>
   );
 };
