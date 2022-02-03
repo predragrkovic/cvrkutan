@@ -18,8 +18,8 @@ export const NewPostCard: FC<NewPostCardProps> = ({onButtonClick, inputPost, han
         value={inputPost}
         onChange={handleInputPost}
         className={`new-post-text ${darkTheme && 'dark'}`}
-        placeholder="Share your thoughts..."></textarea>
-      <SubmitButton onSubmitClick={onButtonClick}>Share</SubmitButton>
+        placeholder="Подели своје мисли..."></textarea>
+      <SubmitButton onSubmitClick={onButtonClick}>Подели</SubmitButton>
     </div>
   );
 };
