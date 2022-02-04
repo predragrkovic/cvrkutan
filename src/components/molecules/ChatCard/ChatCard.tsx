@@ -1,12 +1,13 @@
 import MessageBox from 'components/atoms/Message';
 import SubmitButton from 'components/atoms/SubmitButton';
 import {useDarkTheme} from 'hooks/useDarkTheme';
-import Message from 'models/Message';
+
 import {FC, useState} from 'react';
 import config from 'config.json';
 
 import './style.scss';
 import {usePusher} from 'hooks/usePusher';
+import {Message} from 'models/Message';
 
 export const ChatCard: FC = () => {
   const username = localStorage.getItem('username');
@@ -54,7 +55,14 @@ export const ChatCard: FC = () => {
     <div className={`chat-card-container ${darkTheme && 'dark'}`}>
       <div className={`scroll-div ${darkTheme && 'dark'}`}>
         {messages.map((message: Message, index: number) => {
-          return <MessageBox username={message.username} text={message.message} key={index} />;
+          return (
+            <MessageBox
+              username={message.username}
+              text={message.message}
+              timestamp={message.timestamp}
+              key={index}
+            />
+          );
         })}
       </div>
       <textarea

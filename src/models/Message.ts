@@ -1,11 +1,5 @@
-class Message {
+export interface Message {
   username: string;
   message: string;
-
-  constructor(username: string, message: string) {
-    this.username = username;
-    this.message = message;
-  }
+  timestamp: string;
 }
-
-export default Message;
