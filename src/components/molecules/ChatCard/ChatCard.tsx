@@ -1,72 +1,106 @@
 import MessageBox from 'components/atoms/Message';
 import SubmitButton from 'components/atoms/SubmitButton';
 import {useDarkTheme} from 'hooks/useDarkTheme';
-import Message from 'models/Message';
-import {FC, useEffect, useState} from 'react';
-import Pusher from 'pusher-js';
+
+import {FC, useEffect, useRef, useState} from 'react';
 import config from 'config.json';
 
 import './style.scss';
+import {usePusher} from 'hooks/usePusher';
+import {Message} from 'models/Message';
 
 export const ChatCard: FC = () => {
-  const {darkTheme} = useDarkTheme();
   const username = localStorage.getItem('username');
-  const [messages, setMessages] = useState<Message[]>([]);
+
+  const chatContainerRef = useRef<HTMLDivElement>(null);
+  const messageInputRef = useRef<HTMLTextAreaElement>(null);
+
+  const {darkTheme} = useDarkTheme();
+  const messages: Message[] = usePusher('chat', 'message');
+
   const [message, setMessage] = useState<string>();
+  const [isSending, setIsSending] = useState(false);
 
   useEffect(() => {
-    const pusher = new Pusher('d6bf8ef287243e8f9e13', {
-      cluster: 'eu',
-    });
-
-    const channel = pusher.subscribe('chat');
-    channel.bind('message', function (data: Message) {
-      console.log(data);
-      setMessages((messages) => [...messages, data]);
-    });
-  }, []);
-
-  if (!username) return null;
+    scrollToBottom();
+  }, [messages]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setMessage(e.target.value);
-  };
-
-  const handleSubmit = async () => {
-    if (!message) return;
-
-    await fetch(`http://${config.api_address}:8000/api/messages`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        username,
-        message,
-      }),
-    });
-
-    setMessage('');
   };
 
   const handleKeyPressOnInput = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === 'Enter' && !e.shiftKey) handleSubmit();
   };
 
+  const handleSubmit = async () => {
+    if (!message) return;
+    try {
+      setIsSending(true);
+      await fetch(`http://${config.api_address}:8000/api/messages`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username,
+          message,
+        }),
+      });
+
+      setMessage('');
+    } catch (error: any) {
+      console.log('Sending message failed. Error:', error);
+    } finally {
+      setIsSending(false);
+      focusTextArea();
+    }
+  };
+
+  const scrollToBottom = () => {
+    if (!chatContainerRef || !chatContainerRef.current) return;
+
+    const element = chatContainerRef.current;
+    element.scroll({
+      top: element.scrollHeight,
+      left: 0,
+      behavior: 'smooth',
+    });
+  };
+
+  const focusTextArea = () => {
+    if (!messageInputRef || !messageInputRef.current) return;
+
+    messageInputRef.current.focus();
+  };
+
+  if (!username) return null;
+
   return (
     <div className={`chat-card-container ${darkTheme && 'dark'}`}>
-      <div className={`scroll-div ${darkTheme && 'dark'}`}>
+      <div ref={chatContainerRef} className={`scroll-div ${darkTheme && 'dark'}`}>
         {messages.map((message: Message, index: number) => {
-          return <MessageBox username={message.username} text={message.message} key={index} />;
+          return (
+            <MessageBox
+              username={message.username}
+              text={message.message}
+              timestamp={message.timestamp}
+              key={index}
+            />
+          );
         })}
       </div>
       <textarea
+        ref={messageInputRef}
+        disabled={isSending}
         onKeyPress={(e) => handleKeyPressOnInput(e)}
         className={`input-message ${darkTheme && 'dark'}`}
         placeholder="Упиши своју поруку..."
         value={message}
         onChange={handleInputChange}></textarea>
-      <SubmitButton onSubmitClick={handleSubmit}>Пошаљи</SubmitButton>
+      <SubmitButton disabled={isSending} onSubmitClick={handleSubmit}>
+        Пошаљи
+      </SubmitButton>
     </div>
   );
 };

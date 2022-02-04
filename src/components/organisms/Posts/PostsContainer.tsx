@@ -1,34 +1,22 @@
-import {FC, useEffect, useState} from 'react';
+import {FC, useState} from 'react';
 import PostCard from 'components/molecules/PostCard';
 import Post from 'models/Post';
-
 import './style.scss';
 import NewPost from '../NewPost';
-import Pusher from 'pusher-js';
 import config from 'config.json';
+import {usePusher} from 'hooks/usePusher';
 
 interface PostsProps {
   isRendered: boolean;
 }
 
 export const PostsContainer: FC<PostsProps> = ({isRendered}) => {
-  const [posts, setPosts] = useState<Post[]>([]);
   const [newPost, setNewPost] = useState<string>('');
   const [newTitle, setNewTitle] = useState<string>('');
   const username = localStorage.getItem('username');
   const profileImage = localStorage.getItem('imageUrl');
 
-  useEffect(() => {
-    const pusher = new Pusher('d6bf8ef287243e8f9e13', {
-      cluster: 'eu',
-    });
-
-    const channel = pusher.subscribe('board');
-    channel.bind('post', function (data: Post) {
-      console.log(data);
-      setPosts((posts) => [...posts, data]);
-    });
-  }, []);
+  const posts: Post[] = usePusher('board', 'post');
 
   const handleInputPost = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setNewPost(e.target.value);

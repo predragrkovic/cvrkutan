@@ -30,7 +30,12 @@
     }
   }
   .message-text {
-    margin-top: 5px;
+    margin-top: 10px;
     font-size: $medium;
+  }
+  .message-timestamp {
+    margin-top: 20px;
+    font-size: $small;
+    color: $dark_gray;
   }
 }
