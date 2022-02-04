@@ -1,39 +1,61 @@
 import SubmitButton from 'components/atoms/SubmitButton';
 import {useDarkTheme} from 'hooks/useDarkTheme';
-import {ChangeEventHandler, FC} from 'react';
+import {FC, useState} from 'react';
 import './style.scss';
+import config from '../../../config.json';
 
-interface NewPostCardProps {
-  onButtonClick: () => void;
-  inputPost: string;
-  inputTitle: string;
-  handleInputTitle: ChangeEventHandler<HTMLInputElement>;
-  handleInputPost: ChangeEventHandler<HTMLTextAreaElement>;
-}
+interface NewPostCardProps {}
 
-export const NewPostCard: FC<NewPostCardProps> = ({
-  onButtonClick,
-  inputPost,
-  handleInputPost,
-  inputTitle,
-  handleInputTitle,
-}) => {
+export const NewPostCard: FC<NewPostCardProps> = () => {
   const {darkTheme} = useDarkTheme();
+
+  const [newPost, setNewPost] = useState<string>('');
+  const [newTitle, setNewTitle] = useState<string>('');
+
+  const username = localStorage.getItem('username');
+  const profileImage = localStorage.getItem('imageUrl');
+
+  const handleInputPost = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setNewPost(e.target.value);
+  };
+
+  const handleInputTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNewTitle(e.target.value);
+  };
+
+  const handleNewPostClick = async () => {
+    if (!newPost) return;
+    if (!username) return;
+    if (!profileImage) return;
+
+    await fetch(`http://${config.api_address}:8000/api/posts`, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        username: username,
+        picture: profileImage,
+        title: newTitle,
+        content: newPost,
+      }),
+    });
+
+    setNewPost('');
+  };
 
   return (
     <div className={`new-post-card-container ${darkTheme && 'dark'}`}>
       <input
         className={`new-post-title ${darkTheme && 'dark'}`}
-        value={inputTitle}
+        value={newTitle}
         onChange={handleInputTitle}
         placeholder="Наслов [опционално]..."
       />
       <textarea
-        value={inputPost}
+        value={newPost}
         onChange={handleInputPost}
         className={`new-post-text ${darkTheme && 'dark'}`}
         placeholder="Подели своје мисли..."></textarea>
-      <SubmitButton onSubmitClick={onButtonClick}>Подели</SubmitButton>
+      <SubmitButton onSubmitClick={handleNewPostClick}>Подели</SubmitButton>
     </div>
   );
 };

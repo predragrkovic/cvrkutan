@@ -1,24 +1,12 @@
 import ProfilePicture from 'components/atoms/ProfilePicture';
 import NewPostCard from 'components/molecules/NewPostCard';
-import {ChangeEventHandler, FC} from 'react';
+import {FC} from 'react';
 
 import './style.scss';
 
-interface NewPostContainerProps {
-  onButtonClick: () => void;
-  inputPost: string;
-  inputTitle: string;
-  handleInputTitle: ChangeEventHandler<HTMLInputElement>;
-  handleInputPost: ChangeEventHandler<HTMLTextAreaElement>;
-}
+interface NewPostContainerProps {}
 
-export const NewPostContainer: FC<NewPostContainerProps> = ({
-  onButtonClick,
-  inputPost,
-  inputTitle,
-  handleInputPost,
-  handleInputTitle,
-}) => {
+export const NewPostContainer: FC<NewPostContainerProps> = () => {
   const profilePictureSource = localStorage.getItem('imageUrl');
 
   return (
@@ -26,14 +14,7 @@ export const NewPostContainer: FC<NewPostContainerProps> = ({
       <div className="profile-picture-container">
         <ProfilePicture source={profilePictureSource} />
       </div>
-
-      <NewPostCard
-        onButtonClick={onButtonClick}
-        inputPost={inputPost}
-        inputTitle={inputTitle}
-        handleInputPost={handleInputPost}
-        handleInputTitle={handleInputTitle}
-      />
+      <NewPostCard />
     </div>
   );
 };
