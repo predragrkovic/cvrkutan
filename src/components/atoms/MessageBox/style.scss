@@ -5,37 +5,35 @@
 .message-container {
   margin-bottom: 20px;
   padding: 15px;
-
   width: 100%;
-
   border-radius: px;
-  // background-color: $input;
-  // box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-
   border-bottom: 1px solid $primary_darker;
-
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  &.self {
-    align-items: flex-start;
-  }
-
+  display: block;
+  overflow-wrap: break-word;
   .message-username {
     font-size: $medium;
     color: $secondary;
-
+    text-align: right;
     &.self {
+      text-align: left;
       color: $primary;
     }
   }
   .message-text {
     margin-top: 10px;
     font-size: $medium;
+    text-align: right;
+    &.self {
+      text-align: left;
+    }
   }
   .message-timestamp {
     margin-top: 20px;
     font-size: $small;
     color: $dark_gray;
+    text-align: right;
+    &.self {
+      text-align: left;
+    }
   }
 }

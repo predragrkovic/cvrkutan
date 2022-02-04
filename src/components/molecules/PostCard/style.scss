@@ -32,6 +32,8 @@
     padding-left: 10px;
     padding-right: 10px;
 
+    overflow: hidden;
+
     .title {
       font-size: $large;
       font-weight: bold;
@@ -43,13 +45,13 @@
 
     .post-card-content-text {
       margin-top: 15px;
-    }
 
-    .text {
-      font-size: $medium;
-
-      @include fold {
-        font-size: $medium-fold;
+      .text {
+        font-size: $medium;
+        word-wrap: break-word;
+        @include fold {
+          font-size: $medium-fold;
+        }
       }
     }
   }

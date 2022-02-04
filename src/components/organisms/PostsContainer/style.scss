@@ -20,6 +20,10 @@
   padding-left: 50px;
   padding-right: 50px;
 
+  .scroll-div {
+    width: 100%;
+  }
+
   @include fold {
     min-width: unset;
     padding-bottom: 120px;
