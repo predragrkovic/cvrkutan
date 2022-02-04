@@ -2,15 +2,15 @@ import {FC, useState} from 'react';
 import PostCard from 'components/molecules/PostCard';
 import Post from 'models/Post';
 import './style.scss';
-import NewPost from '../NewPost';
 import config from 'config.json';
 import {usePusher} from 'hooks/usePusher';
+import NewPostContainer from '../NewPostContainer';
 
-interface PostsProps {
+interface PostsContainerProps {
   isRendered: boolean;
 }
 
-export const PostsContainer: FC<PostsProps> = ({isRendered}) => {
+export const PostsContainer: FC<PostsContainerProps> = ({isRendered}) => {
   const [newPost, setNewPost] = useState<string>('');
   const [newTitle, setNewTitle] = useState<string>('');
   const username = localStorage.getItem('username');
@@ -47,7 +47,7 @@ export const PostsContainer: FC<PostsProps> = ({isRendered}) => {
 
   return (
     <div className={`posts-container ${!isRendered && 'hide'}`}>
-      <NewPost
+      <NewPostContainer
         onButtonClick={handleNewPostClick}
         inputPost={newPost}
         inputTitle={newTitle}

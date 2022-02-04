@@ -1,8 +1,8 @@
 // import PostCardContent from 'components/molecules/PostCardContent';
 import BottomTabNavigator from 'components/molecules/BottomTabNavigator';
-import Chat from 'components/organisms/Chat';
+import ChatContainer from 'components/organisms/ChatContainer';
 import Header from 'components/organisms/Header';
-import Posts from 'components/organisms/Posts';
+import PostsContainer from 'components/organisms/PostContainer';
 import UserIdentificationModal from 'components/organisms/UserIdentification';
 import {useDarkTheme} from 'hooks/useDarkTheme';
 import {useState} from 'react';
@@ -25,8 +25,8 @@ function App() {
       <Header />
       <div className={`screen-container`}>
         <div className="padding-div"></div>
-        <Posts isRendered={renderChoice === 'posts'} />
-        <Chat isRendered={renderChoice === 'chat'} />
+        <PostsContainer isRendered={renderChoice === 'posts'} />
+        <ChatContainer isRendered={renderChoice === 'chat'} />
         <div className="padding-div"></div>
       </div>
       <BottomTabNavigator

@@ -4,7 +4,7 @@ import {ChangeEventHandler, FC} from 'react';
 
 import './style.scss';
 
-interface NewPostCardProps {
+interface NewPostContainerProps {
   onButtonClick: () => void;
   inputPost: string;
   inputTitle: string;
@@ -12,17 +12,19 @@ interface NewPostCardProps {
   handleInputPost: ChangeEventHandler<HTMLTextAreaElement>;
 }
 
-export const NewPostContainer: FC<NewPostCardProps> = ({
+export const NewPostContainer: FC<NewPostContainerProps> = ({
   onButtonClick,
   inputPost,
   inputTitle,
   handleInputPost,
   handleInputTitle,
 }) => {
+  const profilePictureSource = localStorage.getItem('imageUrl');
+
   return (
     <div className="new-post-container">
       <div className="profile-picture-container">
-        <ProfilePicture source="https://avatarfiles.alphacoders.com/217/217489.jpg" />
+        <ProfilePicture source={profilePictureSource} />
       </div>
 
       <NewPostCard

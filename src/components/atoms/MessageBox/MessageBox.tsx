@@ -2,7 +2,7 @@ import {FC} from 'react';
 
 import './style.scss';
 
-interface MessageProps {
+interface MessageBoxProps {
   username: string;
   text: string;
   timestamp: string;
@@ -10,7 +10,7 @@ interface MessageProps {
 
 const currentUser = localStorage.getItem('username');
 
-export const Message: FC<MessageProps> = ({username, text, timestamp}) => {
+export const MessageBox: FC<MessageBoxProps> = ({username, text, timestamp}) => {
   return (
     <div className={`message-container ${username == currentUser && 'self'}`}>
       <p className={`message-username ${username == currentUser && 'self'}`}>{username}</p>
