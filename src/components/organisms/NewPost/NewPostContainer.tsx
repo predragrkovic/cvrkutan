@@ -7,13 +7,17 @@ import './style.scss';
 interface NewPostCardProps {
   onButtonClick: () => void;
   inputPost: string;
+  inputTitle: string;
+  handleInputTitle: ChangeEventHandler<HTMLInputElement>;
   handleInputPost: ChangeEventHandler<HTMLTextAreaElement>;
 }
 
 export const NewPostContainer: FC<NewPostCardProps> = ({
   onButtonClick,
   inputPost,
+  inputTitle,
   handleInputPost,
+  handleInputTitle,
 }) => {
   return (
     <div className="new-post-container">
@@ -24,7 +28,9 @@ export const NewPostContainer: FC<NewPostCardProps> = ({
       <NewPostCard
         onButtonClick={onButtonClick}
         inputPost={inputPost}
+        inputTitle={inputTitle}
         handleInputPost={handleInputPost}
+        handleInputTitle={handleInputTitle}
       />
     </div>
   );
