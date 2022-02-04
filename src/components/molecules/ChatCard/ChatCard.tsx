@@ -1,4 +1,4 @@
-import MessageBox from 'components/atoms/Message';
+import MessageBox from 'components/atoms/MessageBox';
 import SubmitButton from 'components/atoms/SubmitButton';
 import {useDarkTheme} from 'hooks/useDarkTheme';
 

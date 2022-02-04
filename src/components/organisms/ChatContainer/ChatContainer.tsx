@@ -3,11 +3,11 @@ import {FC} from 'react';
 
 import './style.scss';
 
-interface ChatProps {
+interface ChatContainerProps {
   isRendered: boolean;
 }
 
-export const ChatContainer: FC<ChatProps> = ({isRendered}) => {
+export const ChatContainer: FC<ChatContainerProps> = ({isRendered}) => {
   return (
     <div className={`chat-container ${!isRendered && 'hide'}`}>
       <ChatCard />
