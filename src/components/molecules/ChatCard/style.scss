@@ -33,6 +33,12 @@
     &.dark {
       background-color: $surface_dark;
     }
+
+    .dummy-div {
+      background-color: red;
+      width: 1px;
+      height: 1px;
+    }
   }
 
   .input-message {
