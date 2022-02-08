@@ -12,6 +12,8 @@ export const NewPostCard: FC<NewPostCardProps> = () => {
   const [newPost, setNewPost] = useState<string>('');
   const [newTitle, setNewTitle] = useState<string>('');
 
+  const [isSending, setIsSending] = useState(false);
+
   const username = localStorage.getItem('username');
   const profileImage = localStorage.getItem('imageUrl');
 
@@ -28,18 +30,26 @@ export const NewPostCard: FC<NewPostCardProps> = () => {
     if (!username) return;
     if (!profileImage) return;
 
-    await fetch(`http://${config.api_address}:8000/api/posts`, {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        username: username,
-        picture: profileImage,
-        title: newTitle,
-        content: newPost,
-      }),
-    });
+    try {
+      setIsSending(true);
+      await fetch(`http://${config.api_address}:8000/api/posts`, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          username: username,
+          picture: profileImage,
+          title: newTitle,
+          content: newPost,
+        }),
+      });
 
-    setNewPost('');
+      setNewPost('');
+      setNewTitle('');
+    } catch (error: any) {
+      console.log('Posting failed. Error:', error);
+    } finally {
+      setIsSending(false);
+    }
   };
 
   return (
@@ -55,7 +65,9 @@ export const NewPostCard: FC<NewPostCardProps> = () => {
         onChange={handleInputPost}
         className={`new-post-text ${darkTheme && 'dark'}`}
         placeholder="Подели своје мисли..."></textarea>
-      <SubmitButton onSubmitClick={handleNewPostClick}>Подели</SubmitButton>
+      <SubmitButton disabled={isSending} onSubmitClick={handleNewPostClick}>
+        Подели
+      </SubmitButton>
     </div>
   );
 };

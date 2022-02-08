@@ -3,8 +3,9 @@
 @import '../../../style/breakpoints.scss';
 
 .post-card-container {
-  padding: 30px;
   margin-bottom: 20px;
+
+  padding: 20px 20px 20px 0px;
 
   display: flex;
   flex-direction: row;
@@ -19,36 +20,73 @@
   }
 
   .post-card-content-left {
-    padding-top: 15px;
-    padding-bottom: 15px;
-
+    display: flex;
     flex: 1;
-    align-self: center;
+    justify-content: center;
+
+    @include fold {
+      padding-left: 5px;
+      padding-right: 5px;
+    }
   }
   .post-card-content-right {
-    flex: 4;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
+    display: flex;
+    flex-direction: column;
+    flex: 5;
 
     overflow: hidden;
 
-    .title {
-      font-size: $large;
-      font-weight: bold;
+    .post-metadata {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
 
-      @include fold {
-        font-size: $large-fold;
+      padding-top: 5px;
+      padding-bottom: 5px;
+
+      .full-name {
+        font-weight: bold;
+        font-size: large;
+        margin-right: 5px;
+
+        @include fold {
+          font-size: small;
+        }
+      }
+      .username {
+        font-size: medium;
+        color: $primary;
+        margin-right: 5px;
+        margin-left: 5px;
+        @include fold {
+          font-size: small;
+        }
+      }
+      .timestamp {
+        margin-left: 5px;
+        font-size: medium;
+        color: $dark_gray;
+        @include fold {
+          font-size: small;
+        }
       }
     }
+    .post-main-data {
+      display: flex;
+      flex-direction: column;
+      .title {
+        font-size: $large;
+        font-weight: bold;
 
-    .post-card-content-text {
-      margin-top: 15px;
+        margin-bottom: 5px;
 
-      .text {
+        @include fold {
+          font-size: $medium;
+        }
+      }
+      .content {
         font-size: $medium;
-        word-wrap: break-word;
+
         @include fold {
           font-size: $medium-fold;
         }
