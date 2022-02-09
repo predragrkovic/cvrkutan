@@ -1,3 +1,4 @@
+import CustomTimestamp from 'components/atoms/CustomTimestamp';
 import ProfilePicture from 'components/atoms/ProfilePicture';
 import {useDarkTheme} from 'hooks/useDarkTheme';
 import Post from 'models/Post';
@@ -7,8 +8,6 @@ import './style.scss';
 interface PostCardProps {
   post: Post;
 }
-
-const username = 'elonski';
 
 export const PostCard: FC<PostCardProps> = ({post}) => {
   const {darkTheme} = useDarkTheme();
@@ -20,11 +19,11 @@ export const PostCard: FC<PostCardProps> = ({post}) => {
       </div>
       <div className="post-card-content-right">
         <div className="post-metadata">
-          <div className="full-name">Elon Musk</div>
+          <div className="full-name">{post.fullname}</div>
           <span>·</span>
-          <div className="username">@{username}</div>
+          <div className="username">@{post.username}</div>
           <span>·</span>
-          <div className="timestamp">20. Jan. 2020.</div>
+          <CustomTimestamp timestamp={post.timestamp} />
         </div>
         <div className="post-main-data">
           <p className="title">{post.title}</p>

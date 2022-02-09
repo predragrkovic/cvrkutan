@@ -21,12 +21,13 @@
 
   .post-card-content-left {
     display: flex;
-    flex: 1;
     justify-content: center;
+    padding-left: 15px;
+    padding-right: 15px;
 
     @include fold {
-      padding-left: 5px;
-      padding-right: 5px;
+      padding-left: 10px;
+      padding-right: 10px;
     }
   }
   .post-card-content-right {
@@ -58,14 +59,6 @@
         color: $primary;
         margin-right: 5px;
         margin-left: 5px;
-        @include fold {
-          font-size: small;
-        }
-      }
-      .timestamp {
-        margin-left: 5px;
-        font-size: medium;
-        color: $dark_gray;
         @include fold {
           font-size: small;
         }

@@ -2,7 +2,7 @@ interface Post {
   username: string;
   picture: string;
   fullname: string;
-  timeStamp: string;
+  timestamp: string;
   title?: string;
   content: string;
 }
