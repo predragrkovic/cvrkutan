@@ -1,11 +1,11 @@
 import axios, {AxiosRequestConfig, AxiosResponse} from 'axios';
 import {BASE_URL} from 'constants/api';
 
-export const sendGetRequest = (path: string) => {
-  return sendRequest('GET', path);
+export const axiosGet = (path: string) => {
+  return axiosRequest('GET', path);
 };
 
-const sendRequest = async (method: 'POST' | 'GET', path: string) => {
+const axiosRequest = async (method: 'POST' | 'GET', path: string) => {
   const axiosConfig: AxiosRequestConfig = {
     url: BASE_URL + path,
     method: method,

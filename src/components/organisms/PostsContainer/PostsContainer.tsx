@@ -3,7 +3,7 @@ import PostCard from 'components/molecules/PostCard';
 import Post from 'models/Post';
 import './style.scss';
 import NewPostContainer from '../NewPostContainer';
-import {useFetch} from 'hooks/useFetch';
+import {useAxiosFetch} from 'hooks/useAxiosFetch';
 import {usePusher} from 'hooks/usePusher';
 import InfiniteLoader from 'components/atoms/InfiniteLoader';
 import CustomErrorMessage from 'components/atoms/CustomErrorMessage';
@@ -14,7 +14,7 @@ interface PostsContainerProps {
 
 export const PostsContainer: FC<PostsContainerProps> = ({isRendered}) => {
   const pusherPosts: Post[] = usePusher('board', 'post');
-  const {response, isLoading, error} = useFetch('/api/posts');
+  const {response, isLoading, error} = useAxiosFetch('/api/posts');
 
   return (
     <div className={`posts-container ${!isRendered && 'hide'}`}>

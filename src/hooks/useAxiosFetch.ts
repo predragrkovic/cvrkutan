@@ -1,15 +1,14 @@
 import {AxiosResponse} from 'axios';
 import {useEffect, useState} from 'react';
-import {sendGetRequest} from 'utils/api';
+import {axiosGet} from 'utils/api';
 
-export const useFetch = (url: string) => {
+export const useAxiosFetch = (url: string) => {
   const [response, setResponse] = useState<AxiosResponse | null>(null);
   const [error, setError] = useState<Error | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    setIsLoading(true);
-    sendGetRequest(url)
+    axiosGet(url)
       .then((res) => {
         setResponse(res);
       })
