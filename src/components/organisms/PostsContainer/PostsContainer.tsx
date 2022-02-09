@@ -7,6 +7,7 @@ import {useAxiosFetch} from 'hooks/useAxiosFetch';
 import {usePusher} from 'hooks/usePusher';
 import InfiniteLoader from 'components/atoms/InfiniteLoader';
 import CustomErrorMessage from 'components/atoms/CustomErrorMessage';
+import {POSTS_URL} from 'constants/paths';
 
 interface PostsContainerProps {
   isRendered: boolean;
@@ -14,7 +15,7 @@ interface PostsContainerProps {
 
 export const PostsContainer: FC<PostsContainerProps> = ({isRendered}) => {
   const pusherPosts: Post[] = usePusher('board', 'post');
-  const {response, isLoading, error} = useAxiosFetch('/posts');
+  const {response, isLoading, error} = useAxiosFetch(POSTS_URL);
 
   return (
     <div className={`posts-container ${!isRendered && 'hide'}`}>

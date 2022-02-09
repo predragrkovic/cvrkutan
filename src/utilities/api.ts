@@ -22,19 +22,19 @@ export const axiosGet = (path: string, queryParams?: URLSearchParams, headers?: 
  */
 export const axiosPost = (
   path: string,
-  queryParams?: URLSearchParams,
   body?: any,
+  queryParams?: URLSearchParams,
   headers?: any,
 ) => {
-  return axiosRequest('POST', path, queryParams, body, headers);
+  return axiosRequest('POST', path, body, queryParams, headers);
 };
 
 const axiosRequest = async (
   method: 'POST' | 'GET' | 'PATCH' | 'DELETE' | 'PUT',
   path: string,
-  queryParams?: URLSearchParams,
   body?: any,
   headers?: any,
+  queryParams?: URLSearchParams,
 ) => {
   const axiosConfig: AxiosRequestConfig = {
     url: BASE_URL + path,
