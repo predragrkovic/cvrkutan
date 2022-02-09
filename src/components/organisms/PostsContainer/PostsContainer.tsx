@@ -14,7 +14,7 @@ interface PostsContainerProps {
 
 export const PostsContainer: FC<PostsContainerProps> = ({isRendered}) => {
   const pusherPosts: Post[] = usePusher('board', 'post');
-  const {response, isLoading, error} = useAxiosFetch('/api/posts');
+  const {response, isLoading, error} = useAxiosFetch('/posts');
 
   return (
     <div className={`posts-container ${!isRendered && 'hide'}`}>
