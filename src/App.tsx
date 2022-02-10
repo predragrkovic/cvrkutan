@@ -3,22 +3,27 @@ import Header from 'components/organisms/Header';
 import UserIdentificationModal from 'components/organisms/UserIdentification';
 import {useDarkTheme} from 'hooks/useDarkTheme';
 import Auth from 'pages/Auth';
-// import Home from 'pages/Home';
-// import {BrowserRouter as Router, Routes} from 'react-router-dom';
+import Home from 'pages/Home';
+import {Routes, Route, BrowserRouter, Navigate} from 'react-router-dom';
 import './App.scss';
 
 function App() {
   const {darkTheme} = useDarkTheme();
 
   return (
-    <div className={`app ${darkTheme && 'dark'}`}>
-      <Header />
-      <div className="screen-container">
-        {/* <Home /> */}
-        <Auth />
+    <BrowserRouter>
+      <div className={`app ${darkTheme && 'dark'}`}>
+        <Header />
+        <div className="screen-container">
+          <Routes>
+            <Route path="/" element={<Navigate to="/home" />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/auth" element={<Auth />} />
+          </Routes>
+        </div>
+        <UserIdentificationModal />
       </div>
-      <UserIdentificationModal />
-    </div>
+    </BrowserRouter>
   );
 }
 
