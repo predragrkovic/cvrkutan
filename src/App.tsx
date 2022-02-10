@@ -1,41 +1,29 @@
 // import PostCardContent from 'components/molecules/PostCardContent';
-import BottomTabNavigator from 'components/molecules/BottomTabNavigator';
-import ChatContainer from 'components/organisms/ChatContainer';
 import Header from 'components/organisms/Header';
-import PostsContainer from 'components/organisms/PostsContainer';
 import UserIdentificationModal from 'components/organisms/UserIdentification';
 import {useDarkTheme} from 'hooks/useDarkTheme';
-import {useState} from 'react';
+import Auth from 'pages/Auth';
+import Home from 'pages/Home';
+import {Routes, Route, BrowserRouter, Navigate} from 'react-router-dom';
 import './App.scss';
 
 function App() {
   const {darkTheme} = useDarkTheme();
-  const [renderChoice, setRenderChoice] = useState<'chat' | 'posts'>('posts');
-
-  const handlePostsClick = () => {
-    setRenderChoice('posts');
-  };
-
-  const handleChatClick = () => {
-    setRenderChoice('chat');
-  };
 
   return (
-    <div className={`app ${darkTheme && 'dark'}`}>
-      <Header />
-      <div className={`screen-container`}>
-        <div className="padding-div"></div>
-        <PostsContainer isRendered={renderChoice === 'posts'} />
-        <ChatContainer isRendered={renderChoice === 'chat'} />
-        <div className="padding-div"></div>
+    <BrowserRouter>
+      <div className={`app ${darkTheme && 'dark'}`}>
+        <Header />
+        <div className="screen-container">
+          <Routes>
+            <Route path="/" element={<Navigate to="/home" />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/auth" element={<Auth />} />
+          </Routes>
+        </div>
+        <UserIdentificationModal />
       </div>
-      <BottomTabNavigator
-        renderChoice={renderChoice}
-        handleChatClick={handleChatClick}
-        handlePostsClick={handlePostsClick}
-      />
-      <UserIdentificationModal />
-    </div>
+    </BrowserRouter>
   );
 }
 
