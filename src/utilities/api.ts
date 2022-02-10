@@ -1,40 +1,32 @@
 import axios, {AxiosRequestConfig, AxiosResponse} from 'axios';
 import {BASE_URL} from 'constants/api';
 
-/**
- *
- * @param path url
- * @param queryParams params sent in url
- * @param headers additional headers
- * @returns axios response promise
- */
-export const axiosGet = (path: string, queryParams?: URLSearchParams, headers?: any) => {
-  return axiosRequest('GET', path, queryParams, headers);
+export const axiosGet = (
+  path: string,
+  queryParams?: URLSearchParams,
+  headers?: any,
+  abortSignal?: AbortSignal,
+) => {
+  return axiosRequest('GET', path, undefined, queryParams, headers, abortSignal);
 };
 
-/**
- *
- * @param path url
- * @param queryParams params sent in url
- * @param body data sent in body
- * @param headers additional headers
- * @returns axios response promise
- */
 export const axiosPost = (
   path: string,
   body?: any,
   queryParams?: URLSearchParams,
   headers?: any,
+  abortSignal?: AbortSignal,
 ) => {
-  return axiosRequest('POST', path, body, queryParams, headers);
+  return axiosRequest('POST', path, body, queryParams, headers, abortSignal);
 };
 
 const axiosRequest = async (
   method: 'POST' | 'GET' | 'PATCH' | 'DELETE' | 'PUT',
   path: string,
   body?: any,
-  headers?: any,
   queryParams?: URLSearchParams,
+  headers?: any,
+  abortSignal?: AbortSignal,
 ) => {
   const axiosConfig: AxiosRequestConfig = {
     url: BASE_URL + path,
@@ -46,6 +38,7 @@ const axiosRequest = async (
       'Content-Type': 'application/json',
       ...headers,
     },
+    signal: abortSignal,
   };
 
   // sets `data` to be sent as the request body

@@ -8,17 +8,23 @@ export const useAxiosFetch = (url: string, queryParams?: URLSearchParams, header
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    axiosGet(url, queryParams, headers)
+    const abortController: AbortController = new AbortController();
+
+    axiosGet(url, queryParams, headers, abortController.signal)
       .then((res) => {
         setResponse(res);
       })
-      .catch((error) => {
-        console.log(error);
-        setError(error);
+      .catch((error: Error) => {
+        if (error.name === 'AbortError') console.log('Fetch aborted');
+        else setError(error);
       })
       .finally(() => {
         setIsLoading(false);
       });
+
+    return () => {
+      abortController.abort();
+    };
   }, []);
 
   return {response, error, isLoading};
