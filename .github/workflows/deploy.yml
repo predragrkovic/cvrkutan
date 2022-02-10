@@ -1,0 +1,39 @@
+name: Deploy cvrkutan
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+env:
+  AZURE_APP_NAME: cvrkutanApp
+  AZURE_API_PATH: './build' 
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ 16.x }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ 16.x }}
+
+      - name: Login to Azure CLI
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+      
+      - name: Install and build 
+        run: |
+          npm ci
+          npm run build --if-present
+
+      - name: Deploy to Azure
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: ${{ env.AZURE_APP_NAME }}
+          package: ${{ env.AZURE_API_PATH }}
+
