@@ -8,9 +8,8 @@ interface CustomTimestampProps {
 
 export const CustomTimestamp: FC<CustomTimestampProps> = ({timestamp}) => {
   return (
-    <div className="timestamp">
+    <abbr className="timestamp" title={timestamp}>
       {moment(timestamp).fromNow()}
-      <span className="tooltiptext">{timestamp}</span>
-    </div>
+    </abbr>
   );
 };
