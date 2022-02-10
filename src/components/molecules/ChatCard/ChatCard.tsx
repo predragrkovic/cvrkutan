@@ -1,13 +1,12 @@
 import MessageBox from 'components/atoms/MessageBox';
 import SubmitButton from 'components/atoms/SubmitButton';
 import {useDarkTheme} from 'hooks/useDarkTheme';
-
 import {FC, useEffect, useRef, useState} from 'react';
-import config from 'config.json';
-
 import './style.scss';
 import {usePusher} from 'hooks/usePusher';
 import {Message} from 'models/Message';
+import {axiosPost} from 'utilities/api';
+import {MESSAGES_URL} from 'constants/paths';
 
 export const ChatCard: FC = () => {
   const username = localStorage.getItem('username');
@@ -37,16 +36,12 @@ export const ChatCard: FC = () => {
     if (!message) return;
     try {
       setIsSending(true);
-      await fetch(`http://${config.api_address}:8000/api/messages`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          username,
-          message,
-        }),
-      });
+
+      const body = {
+        username,
+        message,
+      };
+      await axiosPost(MESSAGES_URL, body);
 
       setMessage('');
     } catch (error: any) {
