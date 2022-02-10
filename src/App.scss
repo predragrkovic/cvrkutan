@@ -15,28 +15,19 @@
     margin: unset;
     padding: unset;
   }
-}
+  .screen-container {
+    overflow-y: hidden;
+    overflow-x: hidden;
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    justify-content: center;
 
-.screen-container {
-  overflow-y: hidden;
-  overflow-x: hidden;
-  display: flex;
-  flex: 1;
-  flex-direction: row;
-  justify-content: center;
-}
-
-.padding-div {
-  width: 20vw;
-  min-width: 50px;
-  @include fold {
-    display: none;
-  }
-}
-
-.choice-button {
-  display: none;
-  @include fold {
-    display: block;
+    padding-left: 20vw;
+    padding-right: 20vw;
+    @include fold {
+      padding-left: unset;
+      padding-right: unset;
+    }
   }
 }
