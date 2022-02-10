@@ -1,9 +1,42 @@
 @import './style/colors';
+@import './style/breakpoints';
+@import './style/fonts';
 
 .app {
-  text-align: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+
   &.dark {
     background-color: $background_dark;
     color: $font_dark;
+  }
+  p {
+    margin: unset;
+    padding: unset;
+  }
+}
+
+.screen-container {
+  overflow-y: hidden;
+  overflow-x: hidden;
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.padding-div {
+  width: 20vw;
+  min-width: 50px;
+  @include fold {
+    display: none;
+  }
+}
+
+.choice-button {
+  display: none;
+  @include fold {
+    display: block;
   }
 }

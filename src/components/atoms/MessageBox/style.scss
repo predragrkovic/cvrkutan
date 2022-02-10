@@ -1,0 +1,39 @@
+@import '../../../style/colors';
+@import '../../../style/fonts';
+@import 'src/style/breakpoints';
+
+.message-container {
+  margin-bottom: 20px;
+  padding: 15px;
+  width: 100%;
+  border-radius: px;
+  border-bottom: 1px solid $primary_darker;
+  display: block;
+  overflow-wrap: break-word;
+  .message-username {
+    font-size: $medium;
+    color: $secondary;
+    text-align: right;
+    &.self {
+      text-align: left;
+      color: $primary;
+    }
+  }
+  .message-text {
+    margin-top: 10px;
+    font-size: $medium;
+    text-align: right;
+    &.self {
+      text-align: left;
+    }
+  }
+  .message-timestamp {
+    margin-top: 20px;
+    font-size: $small;
+    color: $dark_gray;
+    text-align: right;
+    &.self {
+      text-align: left;
+    }
+  }
+}

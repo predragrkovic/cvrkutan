@@ -15,7 +15,7 @@ interface Props {}
 export const ThemeContext = createContext<ContextTypes>(contextDefaultValues);
 
 export const ThemeContextProvider: React.FC<Props> = ({children}) => {
-  const [darkTheme, setDarkTheme] = useState<boolean>(false);
+  const [darkTheme, setDarkTheme] = useState<boolean>(true);
 
   const handleSetDarkTheme = (val: boolean) => {
     setDarkTheme(val);

@@ -1,0 +1,12 @@
+.error-message-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .error-message-icon-left {
+    margin-right: 15px;
+  }
+  .error-message-icon-right {
+    margin-left: 15px;
+  }
+}

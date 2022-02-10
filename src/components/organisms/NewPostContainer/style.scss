@@ -1,0 +1,22 @@
+@import 'src/style/breakpoints';
+@import 'src/style/colors';
+
+.new-post-container {
+  border-radius: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+
+  margin-top: 40px;
+  margin-bottom: 20px;
+
+  .profile-picture-container {
+    margin-right: 30px;
+  }
+
+  @include fold {
+    width: 80vw;
+  }
+}

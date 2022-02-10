@@ -1,0 +1,38 @@
+@import './../../../style/colors';
+@import '../../../style/breakpoints';
+.buttons-container {
+  z-index: 999;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+
+  width: 100%;
+  text-align: center;
+  height: 8vh;
+
+  display: none;
+  flex-direction: row;
+  justify-content: space-around;
+
+  background-color: $surface;
+
+  border-top: 1px solid;
+  border-top-color: $primary_darker;
+
+  &.dark {
+    background-color: $surface_dark;
+  }
+
+  .button {
+    width: 100%;
+    background-color: unset;
+
+    &.selected {
+      color: $primary;
+    }
+  }
+
+  @include fold {
+    display: flex;
+  }
+}

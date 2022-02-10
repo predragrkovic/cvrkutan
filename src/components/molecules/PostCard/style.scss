@@ -1,0 +1,89 @@
+@import '../../../style/fonts.scss';
+@import '../../../style/colors.scss';
+@import '../../../style/breakpoints.scss';
+
+.post-card-container {
+  margin-bottom: 20px;
+
+  padding: 20px 20px 20px 0px;
+
+  display: flex;
+  flex-direction: row;
+
+  border-radius: 30px;
+  background-color: $surface;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+
+  &.dark {
+    background-color: $surface_dark;
+    box-shadow: unset;
+  }
+
+  .post-card-content-left {
+    display: flex;
+    justify-content: center;
+    padding-left: 15px;
+    padding-right: 15px;
+
+    @include fold {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  }
+  .post-card-content-right {
+    display: flex;
+    flex-direction: column;
+    flex: 5;
+
+    overflow: hidden;
+
+    .post-metadata {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      padding-top: 5px;
+      padding-bottom: 5px;
+
+      .full-name {
+        font-weight: bold;
+        font-size: large;
+        margin-right: 5px;
+
+        @include fold {
+          font-size: small;
+        }
+      }
+      .username {
+        font-size: medium;
+        color: $primary;
+        margin-right: 5px;
+        margin-left: 5px;
+        @include fold {
+          font-size: small;
+        }
+      }
+    }
+    .post-main-data {
+      display: flex;
+      flex-direction: column;
+      .title {
+        font-size: $large;
+        font-weight: bold;
+
+        margin-bottom: 5px;
+
+        @include fold {
+          font-size: $medium;
+        }
+      }
+      .content {
+        font-size: $medium;
+
+        @include fold {
+          font-size: $medium-fold;
+        }
+      }
+    }
+  }
+}

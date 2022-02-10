@@ -1,11 +1,18 @@
 // Colors
 $background: ghostwhite;
-$surface: #EFEFEF;
-$input: #EAEAEA;
-$primary: #00B2FF;
-$secondary: rgba(206, 0, 210, 0.7);
+$surface: #efefef;
+$input: #eaeaea;
+$primary: #00b2ff;
+$primary_darker: #005e87;
+$secondary: rgb(241, 65, 244);
 
+$secondary_dark: rgba(211, 203, 211, 0.7);
 $background_dark: #082032;
-$surface_dark: #2C394B;
+$surface_dark: #2c394b;
 $input_dark: #334756;
 $font_dark: ghostwhite;
+
+$background_transparent_dark: #08203291;
+
+$gray: rgb(179, 179, 179);
+$dark_gray: rgb(136, 136, 136);

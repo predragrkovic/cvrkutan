@@ -1,0 +1,68 @@
+@import '../../../style/colors.scss';
+@import '../../../style/fonts';
+
+.new-post-card-container {
+  height: 200px;
+  width: 100%;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 30px;
+  overflow: hidden;
+  background-color: $input;
+
+
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  &.dark {
+    box-shadow: unset;
+    background-color: $input_dark;
+  }
+  .new-post-text {
+    border: none;
+    overflow: auto;
+    outline: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    resize: none; /*remove the resize handle on the bottom right*/
+
+    flex: 3;
+    padding: 30px;
+    padding-bottom: 10px;
+    background-color: $input;
+    color: black;
+    font-size: $small;
+
+    &.dark {
+      background-color: $input_dark;
+      color: ghostwhite;
+      box-shadow: unset;
+    }
+  }
+
+  .new-post-title {
+    border: none;
+    overflow: auto;
+    outline: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    resize: none; /*remove the resize handle on the bottom right*/
+    padding: 10px 10px 10px 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+
+    flex: 1;
+    padding-bottom: 10px;
+    background-color: $input;
+    color: black;
+    font-size: $small;
+    border-bottom: 1px solid $primary_darker;
+
+    &.dark {
+      background-color: $input_dark;
+      color: ghostwhite;
+      box-shadow: unset;
+    }
+  }
+}

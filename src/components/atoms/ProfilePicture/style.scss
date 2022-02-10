@@ -1,0 +1,15 @@
+@import '../../../style/breakpoints.scss';
+
+.profile-picture {
+  width: 55px;
+  height: 55px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid;
+  padding: 2px;
+
+  @include fold {
+    width: 35px;
+    height: 35px;
+  }
+}
