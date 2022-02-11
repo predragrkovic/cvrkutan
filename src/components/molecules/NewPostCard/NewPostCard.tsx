@@ -2,7 +2,8 @@ import SubmitButton from 'components/atoms/SubmitButton';
 import {useDarkTheme} from 'hooks/useDarkTheme';
 import {FC, useState} from 'react';
 import './style.scss';
-import config from '../../../config.json';
+import {axiosPost} from 'utilities/api';
+import {POSTS_URL} from 'constants/paths';
 
 interface NewPostCardProps {}
 
@@ -32,16 +33,15 @@ export const NewPostCard: FC<NewPostCardProps> = () => {
 
     try {
       setIsSending(true);
-      await fetch(`http://${config.api_address}:8000/api/posts`, {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({
-          username: username,
-          picture: profileImage,
-          title: newTitle,
-          content: newPost,
-        }),
-      });
+
+      const body = {
+        username: username,
+        picture: profileImage,
+        title: newTitle,
+        content: newPost,
+      };
+
+      await axiosPost(POSTS_URL, body);
 
       setNewPost('');
       setNewTitle('');
