@@ -1,5 +1,5 @@
 import {AxiosResponse} from 'axios';
-import {useCallback, useState} from 'react';
+import {useCallback, useEffect, useState} from 'react';
 import {axiosPost as sendAxiosPostRequest} from 'utilities/api';
 
 export const useAxiosPost = (): {
@@ -23,6 +23,14 @@ export const useAxiosPost = (): {
       setIsLoading(false);
     }
   }, []);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setError(null), 5000);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [error]);
 
   return {axiosPost, response, error, isLoading};
 };
