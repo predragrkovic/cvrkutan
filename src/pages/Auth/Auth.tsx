@@ -85,7 +85,7 @@ export const Auth = () => {
                 disabled={useGoogleProfileData}
                 onChange={handleInputName}
               />
-              <label className="form__label">username</label>
+              <label className="form__label">name</label>
             </div>
             <div className="form__group ">
               <input
