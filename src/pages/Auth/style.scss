@@ -50,10 +50,6 @@
           background: transparent;
           transition: border-color 0.2s;
 
-          &.disabled {
-            color: gray;
-          }
-
           &::placeholder {
             color: transparent;
           }
@@ -95,9 +91,6 @@
             box-shadow: none;
           }
         }
-      }
-      .checkbox-container {
-        margin-top: 20px;
       }
     }
     .arrow-right {

@@ -1,8 +1,8 @@
 // import PostCardContent from 'components/molecules/PostCardContent';
 import Header from 'components/organisms/Header';
-import UserIdentificationModal from 'components/organisms/UserIdentification';
-import {useCookie} from 'hooks/useCookie';
+
 import {useDarkTheme} from 'hooks/useDarkTheme';
+
 import Auth from 'pages/Auth';
 import Home from 'pages/Home';
 import {useMemo} from 'react';
@@ -13,18 +13,19 @@ import './App.scss';
 
 function App() {
   const {darkTheme} = useDarkTheme();
-  const {value} = useCookie('accessToken');
+
+  const username = localStorage.getItem('username');
 
   const routes = useMemo(() => {
     const routes = [];
-    if (value) {
+    if (username) {
       routes.push(<Route path="/" element={<Navigate to="/home" />} />);
       routes.push(<Route path="/home" element={<Home />} />);
     } else {
       routes.push(<Route path="/auth" element={<Auth />} />);
     }
     return routes;
-  }, [value]);
+  }, [username]);
 
   return (
     <BrowserRouter>
@@ -33,10 +34,9 @@ function App() {
         <div className="screen-container">
           <Routes>
             {routes}
-            <Route path="/*" element={<Navigate to={value ? '/home' : '/auth'} />} />
+            <Route path="/*" element={<Navigate to={username ? '/home' : '/auth'} />} />
           </Routes>
         </div>
-        <UserIdentificationModal />
       </div>
     </BrowserRouter>
   );
