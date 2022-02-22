@@ -12,6 +12,7 @@ export const usePusher = (channelName: string, eventName: string) => {
 
     const channel = pusher.subscribe(channelName);
     channel.bind(eventName, (incomingData: any) => {
+      console.log(incomingData);
       setData((previousData: any[]) => [...previousData, incomingData]);
     });
   }, []);

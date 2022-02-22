@@ -16,7 +16,7 @@ export const NewPostCard: FC<NewPostCardProps> = () => {
   const [isSending, setIsSending] = useState(false);
 
   const username = localStorage.getItem('username');
-  const profileImage = localStorage.getItem('imageUrl');
+  const profileImage = localStorage.getItem('pictureUrl');
 
   const handleInputPost = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setNewPost(e.target.value);

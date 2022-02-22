@@ -10,6 +10,7 @@ import {MESSAGES_URL} from 'constants/paths';
 
 export const ChatCard: FC = () => {
   const username = localStorage.getItem('username');
+  const picture = localStorage.getItem('pictureUrl');
 
   const chatContainerRef = useRef<HTMLDivElement>(null);
   const messageInputRef = useRef<HTMLTextAreaElement>(null);
@@ -39,6 +40,7 @@ export const ChatCard: FC = () => {
 
       const body = {
         username,
+        picture,
         message,
       };
       await axiosPost(MESSAGES_URL, body);

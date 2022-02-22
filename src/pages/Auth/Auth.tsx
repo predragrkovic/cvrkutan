@@ -23,7 +23,7 @@ export const Auth = () => {
     if (!pictureUrl || !username) return;
 
     localStorage.setItem('username', username);
-    localStorage.setItem('pcitureUrl', pictureUrl);
+    localStorage.setItem('pictureUrl', pictureUrl);
 
     window.location.reload();
   };
