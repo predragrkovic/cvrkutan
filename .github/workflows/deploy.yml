@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 env:
-  AZURE_APP_NAME: cvrkutanApp
+  AZURE_APP_NAME: cvrkutan
   AZURE_API_PATH: './build' 
 
 jobs:
