@@ -35,6 +35,12 @@ export const ChatCard: FC = () => {
 
   const handleSubmit = async () => {
     if (!message) return;
+
+    if (!message.trim()) {
+      setMessage('');
+      return;
+    }
+
     try {
       setIsSending(true);
 
