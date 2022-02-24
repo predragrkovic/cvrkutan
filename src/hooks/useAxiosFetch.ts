@@ -2,7 +2,15 @@ import {AxiosResponse} from 'axios';
 import {useEffect, useState} from 'react';
 import {axiosGet} from 'utilities/api';
 
-export const useAxiosFetch = (url: string, queryParams?: URLSearchParams, headers?: any) => {
+export const useAxiosFetch = (
+  url: string,
+  queryParams?: URLSearchParams,
+  headers?: any,
+): {
+  response: AxiosResponse | null;
+  error: Error | null;
+  isLoading: boolean;
+} => {
   const [response, setResponse] = useState<AxiosResponse | null>(null);
   const [error, setError] = useState<Error | null>(null);
   const [isLoading, setIsLoading] = useState(true);

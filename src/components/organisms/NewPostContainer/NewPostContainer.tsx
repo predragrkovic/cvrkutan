@@ -7,7 +7,7 @@ import './style.scss';
 interface NewPostContainerProps {}
 
 export const NewPostContainer: FC<NewPostContainerProps> = () => {
-  const profilePictureSource = localStorage.getItem('imageUrl');
+  const profilePictureSource = localStorage.getItem('pictureUrl');
 
   return (
     <div className="new-post-container">

@@ -1,7 +1,108 @@
+@import '/src/style/colors';
+@import '/src/style/fonts';
+@import '/src/style/breakpoints';
+
 .auth-screen-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   flex: 1;
+
+  .auth-card {
+    background-color: $surface;
+    border-radius: 50px;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    padding: 20px 40px 50px 40px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+
+    &.dark {
+      background-color: $surface_dark;
+    }
+
+    .logo-container {
+      .logo {
+        width: 120px;
+        height: 120px;
+      }
+    }
+    .fields-container {
+      display: flex;
+      flex-direction: column;
+
+      .form__group {
+        position: relative;
+        padding: 15px 0 0;
+        margin-top: 10px;
+        .form__field {
+          font-family: inherit;
+          width: 100%;
+          border: 0;
+          border-bottom: 2px solid $gray;
+          outline: 0;
+          font-size: 1.2rem;
+          color: inherit;
+          padding: 7px 0;
+          background: transparent;
+          transition: border-color 0.2s;
+
+          &::placeholder {
+            color: transparent;
+          }
+
+          &:placeholder-shown ~ .form__label {
+            font-size: 1.2rem;
+            cursor: text;
+            top: 20px;
+          }
+        }
+        .form__label {
+          pointer-events: none;
+          position: absolute;
+          top: 0;
+          display: block;
+          transition: 0.2s;
+          font-size: 1rem;
+          color: $gray;
+        }
+        .form__field:focus {
+          ~ .form__label {
+            position: absolute;
+            top: 0;
+            display: block;
+            transition: 0.2s;
+            font-size: 1rem;
+            color: $primary;
+            font-weight: 700;
+          }
+          padding-bottom: 6px;
+          font-weight: 700;
+          border-width: 3px;
+          border-color: $primary;
+        }
+        /* reset input */
+        .form__field {
+          &:required,
+          &:invalid {
+            box-shadow: none;
+          }
+        }
+      }
+    }
+    .arrow-right {
+      margin-top: 50px;
+
+      &:hover {
+        color: $primary;
+        cursor: pointer;
+      }
+    }
+    .google-button {
+      margin-top: 50px;
+    }
+  }
 }
